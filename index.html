@@ -417,7 +417,7 @@ img{max-width:100%;display:block}
 <li><a href="#schedule">Schedule</a></li>
 <li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#faq">FAQ</a></li>
-<li><a href="#contact" class="nav-cta">Book Appointment</a></li>
+<li><a href="javascript:void(0)" onclick="toggleChat(true)" class="nav-cta">Book Appointment</a></li>
 </ul>
 <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
 <span></span><span></span><span></span>
@@ -437,7 +437,7 @@ img{max-width:100%;display:block}
 <p class="hero-desc">Compassionate psychiatric care at Al Shifa Hospital, Mianwali &amp; surrounding areas. Personalized treatment plans tailored to each patient's individual needs for lasting mental wellness.</p>
     <p class="urdu-text" style="color: rgba(255,255,255,0.85); max-width: 480px; margin-bottom: 30px;">ڈاکٹر وارث خان نیازی، ماہر دماغی و ذہنی امراض / نفسیات، میانوالی اور گردونواح میں ذہنی صحت کی بہترین سہولیات فراہم کرتے ہیں۔</p>
 <div class="hero-btns">
-<a href="#contact" class="btn btn-primary">Book Appointment</a>
+<a href="javascript:void(0)" onclick="toggleChat(true)" class="btn btn-primary">Book Appointment</a>
 <a href="#services" class="btn btn-outline">View Services</a>
 </div>
 <div class="trust-badges">
@@ -825,7 +825,7 @@ img{max-width:100%;display:block}
 <a href="tel:+923123604369" class="bar-call"><i class="fa-solid fa-phone"></i><span>Call 1</span></a>
 <a href="tel:+923025584767" class="bar-call" style="background: #205c84;"><i class="fa-solid fa-phone"></i><span>Call 2</span></a>
 <a href="https://wa.me/923123604369" target="_blank" class="bar-wa"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
-<a href="#contact" class="bar-book"><i class="fa-solid fa-calendar-check"></i><span>Book</span></a>
+<a href="javascript:void(0)" onclick="toggleChat(true)" class="bar-book"><i class="fa-solid fa-calendar-check"></i><span>Book</span></a>
 </div>
 </div>
 
@@ -927,6 +927,267 @@ function handleSubmit(e) {
     e.target.reset();
   }, 3000);
 }
+</script>
+<!-- CHATBOT WIDGET -->
+<style>
+/* Chatbot CSS */
+#chatbot-trigger { position: fixed; bottom: 95px; right: 24px; width: 60px; height: 60px; background-color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(14, 154, 167, 0.4); z-index: 9999; transition: transform 0.3s ease; }
+#chatbot-trigger:hover { transform: scale(1.05); }
+#chatbot-trigger svg { fill: white; width: 32px; height: 32px; }
+#chatbot-window { position: fixed; bottom: 95px; right: 24px; width: 340px; height: 500px; max-height: calc(100vh - 110px); background-color: var(--bg); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); display: flex; flex-direction: column; overflow: hidden; z-index: 9999; opacity: 0; transform: translateY(20px) scale(0.95); transform-origin: bottom right; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+#chatbot-window.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+@media (max-width: 480px) {
+    #chatbot-window { width: 100%; height: 85vh; max-height: 100%; bottom: 0; right: 0; border-radius: 16px 16px 0 0; }
+    #chatbot-trigger { bottom: 85px; right: 20px; }
+}
+#chatbot-header { background-color: var(--primary); padding: 16px; display: flex; align-items: center; justify-content: space-between; color: white; }
+.header-info { display: flex; align-items: center; gap: 12px; }
+.header-avatar { width: 40px; height: 40px; background-color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; }
+.header-text { display: flex; flex-direction: column; }
+.header-name { font-weight: 600; font-size: 15px; }
+.header-status { font-size: 12px; color: #d1d5db; display: flex; align-items: center; gap: 6px; }
+.status-dot { width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; display: inline-block; }
+.close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; }
+#chatbot-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+.message { display: flex; flex-direction: column; max-width: 90%; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.bot-msg { align-self: flex-start; background-color: white; padding: 12px 16px; border-radius: 12px 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.user-msg { align-self: flex-end; background-color: var(--secondary); color: white; padding: 12px 16px; border-radius: 12px 12px 0 12px; }
+.cb-urdu-text { font-family: 'Noto Nastaliq Urdu', serif; font-size: 17px; font-weight: 700; direction: rtl; text-align: right; margin-bottom: 8px; line-height: 1.8; color: #1a202c; }
+.cb-en-text { font-family: 'Lato', sans-serif; font-size: 13px; color: #64748b; direction: ltr; text-align: left; }
+.user-msg .cb-en-text { color: #e0f2fe; }
+.action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; width: 100%; }
+.chat-btn { background-color: white; border: 1px solid var(--secondary); border-radius: 8px; padding: 10px 16px; min-height: 52px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; }
+.chat-btn:hover { background-color: var(--secondary); }
+.chat-btn .btn-urdu { font-family: 'Noto Nastaliq Urdu', serif; font-weight: 700; font-size: 15px; color: var(--secondary); margin-bottom: 4px; direction: rtl; }
+.chat-btn .btn-en { font-family: 'Lato', sans-serif; font-size: 12px; color: var(--primary); }
+.chat-btn:hover .btn-urdu, .chat-btn:hover .btn-en { color: white; }
+.cb-location-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+.cb-location-title-ur { font-family: 'Noto Nastaliq Urdu', serif; font-weight: 700; direction: rtl; font-size: 16px; color: var(--primary); margin-bottom: 4px; }
+.cb-location-title-en { font-weight: 600; font-size: 13px; color: var(--primary); margin-bottom: 8px; }
+.cb-location-details { font-size: 12px; color: #475569; margin-bottom: 4px; display: flex; justify-content: space-between; }
+.cb-location-details.ur { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; font-size: 13px; }
+#chatbot-footer { padding: 12px; text-align: center; background-color: white; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; }
+.typing-indicator { display: flex; gap: 4px; padding: 12px 16px; background: white; border-radius: 12px 12px 12px 0; align-self: flex-start; width: fit-content; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.typing-dot { width: 6px; height: 6px; background-color: var(--secondary); border-radius: 50%; animation: typing 1.4s infinite ease-in-out both; }
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+@keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+#chatbot-body::-webkit-scrollbar { width: 6px; }
+#chatbot-body::-webkit-scrollbar-track { background: transparent; }
+#chatbot-body::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+</style>
+
+<div id="chatbot-trigger" onclick="toggleChat()">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z"/>
+        <path d="M7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z"/>
+    </svg>
+</div>
+
+<div id="chatbot-window">
+    <div id="chatbot-header">
+        <div class="header-info">
+            <div class="header-avatar">Dr</div>
+            <div class="header-text">
+                <span class="header-name">Dr. Waris Khan Niazi</span>
+                <span class="header-status"><span class="status-dot"></span> Online</span>
+            </div>
+        </div>
+        <button class="close-btn" onclick="toggleChat()">&times;</button>
+    </div>
+    <div id="chatbot-body"></div>
+    <div id="chatbot-footer">Powered by Dr. Waris's Clinic</div>
+</div>
+
+<script>
+    const WHATSAPP_NUMBER = "923025584767";
+
+    const chatWindow = document.getElementById('chatbot-window');
+    const chatBody = document.getElementById('chatbot-body');
+    let chatOpen = false;
+    let isFirstOpen = true;
+
+    function toggleChat(forceOpen = false) {
+        if(forceOpen) { chatOpen = true; } 
+        else { chatOpen = !chatOpen; }
+
+        if (chatOpen) {
+            chatWindow.classList.add('open');
+            if (isFirstOpen) {
+                showTyping();
+                setTimeout(() => {
+                    removeTyping();
+                    sendBotMessage(
+                        "السلام علیکم! 👋<br>میں ڈاکٹر وارث خان نیازی کا اسسٹنٹ ہوں۔<br>آپ کی کیا مدد کر سکتا ہوں؟", 
+                        "Hello! I'm Dr. Waris's assistant.<br>How can I help you today?"
+                    );
+                    showMainMenu();
+                    isFirstOpen = false;
+                }, 800);
+            }
+        } else {
+            chatWindow.classList.remove('open');
+        }
+    }
+
+    function scrollToBottom() {
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function showTyping() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'typing-indicator';
+        typingDiv.id = 'typing-indicator';
+        typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        chatBody.appendChild(typingDiv);
+        scrollToBottom();
+    }
+
+    function removeTyping() {
+        const typingDiv = document.getElementById('typing-indicator');
+        if (typingDiv) typingDiv.remove();
+    }
+
+    function sendBotMessage(urduText, enText) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message bot-msg';
+        msgDiv.innerHTML = '<div class="cb-urdu-text">' + urduText + '</div><div class="cb-en-text">' + enText + '</div>';
+        chatBody.appendChild(msgDiv);
+        scrollToBottom();
+    }
+
+    function sendUserMessage(urduText, enText) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message user-msg';
+        msgDiv.innerHTML = '<div class="cb-urdu-text" style="color:white;">' + urduText + '</div><div class="cb-en-text">' + enText + '</div>';
+        chatBody.appendChild(msgDiv);
+        scrollToBottom();
+    }
+
+    function addActionButtons(buttons) {
+        const container = document.createElement('div');
+        container.className = 'action-buttons';
+        buttons.forEach(btn => {
+            const button = document.createElement('button');
+            button.className = 'chat-btn';
+            button.innerHTML = '<span class="btn-urdu">' + btn.urdu + '</span><span class="btn-en">' + btn.en + '</span>';
+            button.onclick = () => {
+                container.style.display = 'none';
+                sendUserMessage(btn.urdu, btn.en);
+                showTyping();
+                setTimeout(() => {
+                    removeTyping();
+                    btn.action();
+                }, 600);
+            };
+            container.appendChild(button);
+        });
+        chatBody.appendChild(container);
+        scrollToBottom();
+    }
+
+    function openWhatsApp(message = "") {
+        const encodedMessage = encodeURIComponent(message || "السلام علیکم ڈاکٹر صاحب،\\nمیں اپوائنٹمنٹ بک کروانا چاہتا/چاہتی ہوں۔\\nبراہ کرم رہنمائی فرمائیں۔ شکریہ");
+        window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodedMessage, '_blank');
+        setTimeout(() => { showMainMenu(); }, 1000);
+    }
+
+    function showMainMenu() {
+        addActionButtons([
+            { urdu: "📅 اپوائنٹمنٹ بک کریں", en: "Book Appointment", action: flowBookAppointment },
+            { urdu: "🏥 قریبی کلینک تلاش کریں", en: "Find Nearest Clinic", action: flowViewSchedule },
+            { urdu: "🕐 ڈاکٹر کا شیڈول دیکھیں", en: "View Schedule", action: flowViewSchedule },
+            { urdu: "💊 بیماری کے بارے میں پوچھیں", en: "Ask About a Condition", action: flowAskCondition },
+            { urdu: "📞 ڈاکٹر سے براہ راست رابطہ", en: "Contact Doctor Directly", action: flowContactDoctor }
+        ]);
+    }
+
+    function flowBookAppointment() {
+        sendBotMessage("آپ کس علاقے سے تشریف لا رہے ہیں؟", "Which area are you from?");
+        addActionButtons([
+            { urdu: "میانوالی", en: "Mianwali", action: () => showClinicArea("mianwali") },
+            { urdu: "گلاں خیل", en: "Gullan Khel", action: () => showClinicArea("gullan") },
+            { urdu: "حافظ والہ", en: "Hafiz Wala", action: () => showClinicArea("hafiz") },
+            { urdu: "پیپلاں", en: "Piplan", action: () => showClinicArea("piplan") },
+            { urdu: "دوسرا علاقہ", en: "Other Area", action: () => showClinicArea("other") },
+            { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }
+        ]);
+    }
+
+    function showClinicArea(area) {
+        let urdu, en;
+        if (area === "mianwali") { urdu = "📍 الشفاء ہسپتال، میانوالی<br>دن: پیر تا جمعرات اور ہفتہ<br>وقت: شام 4 بجے سے 7 بجے تک<br><br>ڈاکٹر صاحب آپ کا انتظار کریں گے۔<br>واٹس ایپ پر اپوائنٹمنٹ بک کریں 👇"; en = "Al Shifa Hospital, Mianwali<br>Mon–Thu & Saturday | 4:00–7:00 PM"; }
+        else if (area === "gullan") { urdu = "📍 مریم ہسپتال، گلاں خیل<br>دن: جمعہ<br>وقت: شام 4 بجے سے 6 بجے تک"; en = "Maryam Hospital Gullan Khel<br>Friday | 4:00–6:00 PM"; }
+        else if (area === "hafiz") { urdu = "📍 طلحہ کلینک، حافظ والہ<br>دن: اتوار<br>وقت: صبح 9 بجے سے دوپہر 12 بجے تک"; en = "Talha Clinic Hafiz Wala<br>Sunday | 9:00 AM–12:00 PM"; }
+        else if (area === "piplan") { urdu = "📍 مظہر ہسپتال، پیپلاں<br>دن: اتوار<br>وقت: دوپہر 12 بجے سے 2 بجے تک"; en = "Mazhar Hospital Piplan<br>Sunday | 12:00–2:00 PM"; }
+        else if (area === "other") {
+            urdu = "🌐 آن لائن مشاورت بھی دستیاب ہے۔<br>واٹس ایپ پر رابطہ کریں۔"; en = "Online consultation available.<br>Contact via WhatsApp.";
+            sendBotMessage(urdu, en);
+            addActionButtons([{ urdu: "💬 واٹس ایپ پر رابطہ کریں", en: "Contact on WhatsApp", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
+            return;
+        }
+        sendBotMessage(urdu, en);
+        addActionButtons([{ urdu: "💬 واٹس ایپ پر بک کریں", en: "Book on WhatsApp", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
+    }
+
+    function flowViewSchedule() {
+        sendBotMessage("ڈاکٹر صاحب کے تمام کلینک اور اوقات:", "All clinics and timings:");
+        const scheduleHTML = '<div class="cb-location-card"><div class="cb-location-title-ur">📍 الشفاء ہسپتال، میانوالی</div><div class="cb-location-title-en">Al Shifa Hospital, Mianwali</div><div class="cb-location-details ur">پیر تا جمعرات، ہفتہ</div><div class="cb-location-details"><span>Mon–Thu, Sat</span> <span>⏰ 4:00 PM – 7:00 PM</span></div></div><div class="cb-location-card"><div class="cb-location-title-ur">📍 فیملی ہسپتال قمر مشانی</div><div class="cb-location-title-en">Family Hospital Qamar Mashani</div><div class="cb-location-details ur">جمعہ</div><div class="cb-location-details"><span>Friday</span> <span>⏰ 2:00 PM – 4:00 PM</span></div></div><div class="cb-location-card"><div class="cb-location-title-ur">📍 مریم ہسپتال گلاں خیل</div><div class="cb-location-title-en">Maryam Hospital Gullan Khel</div><div class="cb-location-details ur">جمعہ</div><div class="cb-location-details"><span>Friday</span> <span>⏰ 4:00 PM – 6:00 PM</span></div></div><div class="cb-location-card"><div class="cb-location-title-ur">📍 طلحہ کلینک حافظ والہ</div><div class="cb-location-title-en">Talha Clinic Hafiz Wala</div><div class="cb-location-details ur">اتوار</div><div class="cb-location-details"><span>Sunday</span> <span>⏰ 9:00 AM – 12:00 PM</span></div></div><div class="cb-location-card"><div class="cb-location-title-ur">📍 مظہر ہسپتال پیپلاں</div><div class="cb-location-title-en">Mazhar Hospital Piplan</div><div class="cb-location-details ur">اتوار</div><div class="cb-location-details"><span>Sunday</span> <span>⏰ 12:00 PM – 2:00 PM</span></div></div>';
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message bot-msg';
+        msgDiv.innerHTML = scheduleHTML;
+        chatBody.appendChild(msgDiv);
+        scrollToBottom();
+        setTimeout(() => {
+            addActionButtons([{ urdu: "💬 اپوائنٹمنٹ بک کریں", en: "Book Appointment", action: flowBookAppointment }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
+        }, 600);
+    }
+
+    function flowAskCondition() {
+        sendBotMessage("کون سی تکلیف یا بیماری کے بارے میں جاننا چاہتے ہیں؟", "Which condition would you like to know about?");
+        addActionButtons([
+            { urdu: "😔 ڈپریشن / اینگزائٹی", en: "Depression & Anxiety", action: () => showConditionDetails("depression") },
+            { urdu: "🧠 شیزوفرینیا", en: "Schizophrenia", action: () => showConditionDetails("schizo") },
+            { urdu: "🔄 بائپولر ڈس آرڈر", en: "Bipolar Disorder", action: () => showConditionDetails("bipolar") },
+            { urdu: "🔁 او سی ڈی / پی ٹی ایس ڈی", en: "OCD / PTSD", action: () => showConditionDetails("ocd") },
+            { urdu: "💊 نشہ / لت", en: "Addiction", action: () => showConditionDetails("addiction") },
+            { urdu: "👶 بچوں کی ذہنی صحت", en: "Child Psychiatry", action: () => showConditionDetails("child") },
+            { urdu: "😴 نیند کی تکلیف", en: "Sleep Disorder", action: () => showConditionDetails("sleep") },
+            { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }
+        ]);
+    }
+
+    function showConditionDetails(type) {
+        let urduDesc = "یہ ایک قابل علاج مرض ہے۔<br>اس کا علاج ادویات اور تھراپی سے ممکن ہے۔";
+        let enDesc = "This is a treatable condition.<br>It can be managed with medication and therapy.";
+        if (type === "depression") { urduDesc = "ڈپریشن اور گھبراہٹ میں انسان اداس رہتا ہے اور بلاوجہ ڈر لگتا ہے۔<br>بروقت علاج سے انسان بالکل ٹھیک ہو سکتا ہے۔"; enDesc = "Depression and anxiety involve persistent sadness and fear.<br>Timely treatment leads to full recovery."; }
+        else if (type === "schizo") { urduDesc = "اس میں مریض کو غیبی آوازیں آ سکتی ہیں یا شک کی بیماری ہو سکتی ہے۔<br>مسلسل علاج سے نارمل زندگی گزاری جا سکتی ہے۔"; enDesc = "Patients may hear voices or experience paranoia.<br>Continuous treatment allows for a normal life."; }
+        else if (type === "bipolar") { urduDesc = "بائپولر میں مزاج تیزی سے بدلتا ہے، کبھی بہت خوشی اور کبھی شدید اداسی۔<br>ادویات کے ذریعے اس پر قابو پایا جا سکتا ہے۔"; enDesc = "Mood swings rapidly between extreme happiness and severe sadness.<br>It can be controlled with medication."; }
+        else if (type === "ocd") { urduDesc = "او سی ڈی میں ایک ہی خیال بار بار آتا ہے یا انسان بار بار ہاتھ دھوتا ہے۔<br>ڈاکٹر صاحب اس کا بہترین علاج کرتے ہیں۔"; enDesc = "Involves recurring unwanted thoughts or repetitive behaviors.<br>Effectively treated by Dr. Waris."; }
+        else if (type === "addiction") { urduDesc = "ہر قسم کے نشے سے چھٹکارا پانا ممکن ہے۔<br>مریض کو ہمدردی اور مناسب علاج کی ضرورت ہوتی ہے۔"; enDesc = "Recovery from all types of addiction is possible.<br>Requires empathy and proper medical treatment."; }
+        else if (type === "child") { urduDesc = "بچوں کا ضدی پن، پڑھائی میں دل نہ لگنا، یا آٹزم کا علاج۔<br>بچوں کی ذہنی صحت بہت اہم ہے۔"; enDesc = "Treats stubbornness, lack of focus, and autism in children.<br>Child mental well-being is highly important."; }
+        else if (type === "sleep") { urduDesc = "نیند نہ آنا یا بہت زیادہ سونا دونوں ذہنی صحت کو متاثر کرتے ہیں۔<br>بہتر نیند کے لیے علاج دستیاب ہے۔"; enDesc = "Insomnia or excessive sleeping impacts mental health.<br>Effective treatments are available for better sleep."; }
+        urduDesc += "<br><br>ڈاکٹر صاحب اس میں مہارت رکھتے ہیں۔<br>کیا اپوائنٹمنٹ بک کریں؟";
+        enDesc += "<br><br>Dr. Waris specializes in this.<br>Would you like to book an appointment?";
+        sendBotMessage(urduDesc, enDesc);
+        addActionButtons([{ urdu: "💬 جی، بک کریں", en: "Yes, Book Now", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: flowAskCondition }]);
+    }
+
+    function flowContactDoctor() {
+        sendBotMessage("ڈاکٹر وارث خان نیازی سے رابطے کا طریقہ منتخب کریں:", "Choose how to reach Dr. Waris:");
+        addActionButtons([
+            { urdu: "📞 ابھی کال کریں", en: "Call Now", action: () => { window.location.href = "tel:03025584767"; } },
+            { urdu: "💬 واٹس ایپ میسج", en: "WhatsApp Message", action: () => openWhatsApp() },
+            { urdu: "🌐 آن لائن مشاورت", en: "Online Consultation", action: flowOnlineConsultation },
+            { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }
+        ]);
+    }
+
+    function flowOnlineConsultation() {
+        sendBotMessage("آن لائن مشاورت واٹس ایپ ویڈیو کال کے ذریعے دستیاب ہے۔<br>دستیاب دن: پیر تا جمعرات، ہفتہ<br>وقت: شام 4 بجے سے 7 بجے تک", "Online via WhatsApp Video Call<br>Mon–Thu & Saturday | 4–7 PM");
+        addActionButtons([{ urdu: "💬 آن لائن اپوائنٹمنٹ", en: "Online Appointment", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: flowContactDoctor }]);
+    }
 </script>
 </body>
 </html>
