@@ -1088,7 +1088,7 @@ function handleSubmit(e) {
     }
 
     function openWhatsApp(message = "") {
-        const encodedMessage = encodeURIComponent(message || "السلام علیکم ڈاکٹر صاحب،\\nمیں اپوائنٹمنٹ بک کروانا چاہتا/چاہتی ہوں۔\\nبراہ کرم رہنمائی فرمائیں۔ شکریہ");
+        const encodedMessage = encodeURIComponent(message || "السلام علیکم ڈاکٹر صاحب،\nمیں اپوائنٹمنٹ بک کروانا چاہتا/چاہتی ہوں۔\nبراہ کرم رہنمائی فرمائیں۔ شکریہ");
         window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodedMessage, '_blank');
         setTimeout(() => { showMainMenu(); }, 1000);
     }
@@ -1116,19 +1116,20 @@ function handleSubmit(e) {
     }
 
     function showClinicArea(area) {
-        let urdu, en;
-        if (area === "mianwali") { urdu = "📍 الشفاء ہسپتال، میانوالی<br>دن: پیر تا جمعرات اور ہفتہ<br>وقت: شام 4 بجے سے 7 بجے تک<br><br>ڈاکٹر صاحب آپ کا انتظار کریں گے۔<br>واٹس ایپ پر اپوائنٹمنٹ بک کریں 👇"; en = "Al Shifa Hospital, Mianwali<br>Mon–Thu & Saturday | 4:00–7:00 PM"; }
-        else if (area === "gullan") { urdu = "📍 مریم ہسپتال، گلاں خیل<br>دن: جمعہ<br>وقت: شام 4 بجے سے 6 بجے تک"; en = "Maryam Hospital Gullan Khel<br>Friday | 4:00–6:00 PM"; }
-        else if (area === "hafiz") { urdu = "📍 طلحہ کلینک، حافظ والہ<br>دن: اتوار<br>وقت: صبح 9 بجے سے دوپہر 12 بجے تک"; en = "Talha Clinic Hafiz Wala<br>Sunday | 9:00 AM–12:00 PM"; }
-        else if (area === "piplan") { urdu = "📍 مظہر ہسپتال، پیپلاں<br>دن: اتوار<br>وقت: دوپہر 12 بجے سے 2 بجے تک"; en = "Mazhar Hospital Piplan<br>Sunday | 12:00–2:00 PM"; }
+        let urdu, en, clinicName;
+        if (area === "mianwali") { urdu = "📍 الشفاء ہسپتال، میانوالی<br>دن: پیر تا جمعرات اور ہفتہ<br>وقت: شام 4 بجے سے 7 بجے تک<br><br>ڈاکٹر صاحب آپ کا انتظار کریں گے۔<br>واٹس ایپ پر اپوائنٹمنٹ بک کریں 👇"; en = "Al Shifa Hospital, Mianwali<br>Mon–Thu & Saturday | 4:00–7:00 PM"; clinicName = "الشفاء ہسپتال (میانوالی)"; }
+        else if (area === "gullan") { urdu = "📍 مریم ہسپتال، گلاں خیل<br>دن: جمعہ<br>وقت: شام 4 بجے سے 6 بجے تک"; en = "Maryam Hospital Gullan Khel<br>Friday | 4:00–6:00 PM"; clinicName = "مریم ہسپتال (گلاں خیل)"; }
+        else if (area === "hafiz") { urdu = "📍 طلحہ کلینک، حافظ والہ<br>دن: اتوار<br>وقت: صبح 9 بجے سے دوپہر 12 بجے تک"; en = "Talha Clinic Hafiz Wala<br>Sunday | 9:00 AM–12:00 PM"; clinicName = "طلحہ کلینک (حافظ والہ)"; }
+        else if (area === "piplan") { urdu = "📍 مظہر ہسپتال، پیپلاں<br>دن: اتوار<br>وقت: دوپہر 12 بجے سے 2 بجے تک"; en = "Mazhar Hospital Piplan<br>Sunday | 12:00–2:00 PM"; clinicName = "مظہر ہسپتال (پیپلاں)"; }
         else if (area === "other") {
             urdu = "🌐 آن لائن مشاورت بھی دستیاب ہے۔<br>واٹس ایپ پر رابطہ کریں۔"; en = "Online consultation available.<br>Contact via WhatsApp.";
             sendBotMessage(urdu, en);
-            addActionButtons([{ urdu: "💬 واٹس ایپ پر رابطہ کریں", en: "Contact on WhatsApp", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
+            addActionButtons([{ urdu: "💬 واٹس ایپ پر رابطہ کریں", en: "Contact on WhatsApp", action: () => openWhatsApp("السلام علیکم ڈاکٹر صاحب،\nمیں آن لائن مشاورت کے لیے اپوائنٹمنٹ بک کروانا چاہتا/چاہتی ہوں۔\nبراہ کرم رہنمائی فرمائیں۔ شکریہ") }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
             return;
         }
         sendBotMessage(urdu, en);
-        addActionButtons([{ urdu: "💬 واٹس ایپ پر بک کریں", en: "Book on WhatsApp", action: () => openWhatsApp() }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
+        let waMessage = `السلام علیکم ڈاکٹر صاحب،\nمیں ${clinicName} میں اپوائنٹمنٹ بک کروانا چاہتا/چاہتی ہوں۔\nبراہ کرم رہنمائی فرمائیں۔ شکریہ`;
+        addActionButtons([{ urdu: "💬 واٹس ایپ پر بک کریں", en: "Book on WhatsApp", action: () => openWhatsApp(waMessage) }, { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }]);
     }
 
     function flowViewSchedule() {
