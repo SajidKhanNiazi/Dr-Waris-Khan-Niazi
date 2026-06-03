@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Waris Khan Niazi — Psychiatrist | MBBS, M.Phil (Psychiatry) | Mianwali & Diliewali</title>
-<meta name="description" content="Dr. Waris Khan Niazi is a qualified Psychiatrist (MBBS, M.Phil) offering compassionate mental health care in Mianwali & Diliewali, Pakistan. Book your appointment today.">
-<meta name="keywords" content="psychiatrist mianwali, mental health pakistan, Dr Waris Khan Niazi, depression treatment, anxiety treatment, psychiatrist diliewali">
+<title>Dr. Waris Khan Niazi — Psychiatrist | MBBS, DPM (FMU/PMC), CAMH-C</title>
+<meta name="description" content="Dr. Waris Khan Niazi is a qualified Psychiatrist (MBBS, DPM, CAMH-C) offering compassionate mental health care in Mianwali District, Pakistan. Book your appointment today.">
+<meta name="keywords" content="psychiatrist mianwali district, mental health pakistan, Dr Waris Khan Niazi, depression treatment, anxiety treatment, psychiatrist piplan, qamar mashani">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -72,9 +72,11 @@ img{max-width:100%;display:block}
 .trust-badge{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);font-size:.9rem}
 .trust-badge i{color:var(--secondary);font-size:1rem}
 .hero-image{position:relative;z-index:2;display:flex;justify-content:center}
-.hero-img-wrapper{width:380px;height:460px;border-radius:20px;overflow:hidden;border:4px solid rgba(14,154,167,.3);box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;background:linear-gradient(135deg,rgba(14,154,167,.1),rgba(201,168,76,.1))}
-.hero-img-wrapper img{width:100%;height:100%;object-fit:cover}
-.hero-img-wrapper::after{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(to top,rgba(10,35,66,.2),transparent)}
+.hero-img-wrapper{width:400px;height:500px;border-radius:40px 120px 40px 120px;overflow:hidden;border:none;box-shadow:0 30px 60px rgba(10,35,66,.5), 0 0 40px rgba(14,154,167,.3);position:relative;background:linear-gradient(135deg,rgba(14,154,167,.1),rgba(201,168,76,.1));transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1)}
+.hero-img-wrapper:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 40px 70px rgba(10,35,66,.6), 0 0 50px rgba(14,154,167,.4);border-radius:120px 40px 120px 40px}
+.hero-img-wrapper img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 0.8s ease}
+.hero-img-wrapper:hover img{transform:scale(1.05)}
+.hero-img-wrapper::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,35,66,.3),transparent 50%);pointer-events:none}
 .hero-float-card{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);padding:14px 20px;border-radius:12px;box-shadow:var(--shadow);z-index:3}
 .hero-float-card.card-1{bottom:30px;left:-30px;display:flex;align-items:center;gap:10px}
 .hero-float-card.card-2{top:30px;right:-30px;display:flex;align-items:center;gap:10px}
@@ -86,9 +88,11 @@ img{max-width:100%;display:block}
 .about{background:var(--white)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .about-img-container{position:relative}
-.about-img{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg)}
-.about-img img{width:100%;height:450px;object-fit:cover}
-.about-accent{position:absolute;width:200px;height:200px;border:4px solid var(--accent);border-radius:16px;bottom:-20px;right:-20px;z-index:-1}
+.about-img{border-radius:24px;overflow:hidden;box-shadow:0 20px 50px rgba(10,35,66,.15);position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover;object-position:top center;transition:transform 0.6s ease}
+.about-img:hover img{transform:scale(1.03)}
+.about-accent{position:absolute;width:100%;height:100%;border:3px solid var(--accent);border-radius:24px;top:20px;left:20px;z-index:-1;transition:all 0.4s ease}
+.about-img-container:hover .about-accent{top:12px;left:12px}
 .about-content h2{font-size:2.2rem;margin-bottom:20px}
 .about-content p{color:#555;margin-bottom:16px;font-size:1.02rem}
 .about-highlight{background:linear-gradient(135deg,rgba(14,154,167,.08),rgba(201,168,76,.05));border-left:4px solid var(--secondary);padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0}
@@ -365,21 +369,22 @@ img{max-width:100%;display:block}
 <div class="hero-content">
 <div class="hero-badge"><i class="fa-solid fa-brain"></i>&nbsp; Mental Health Specialist</div>
 <h1>Your Mind Deserves <span>Expert Care</span></h1>
-<p class="hero-sub">Dr. Waris Khan Niazi — MBBS, M.Phil (Psychiatry)</p>
-<p class="hero-desc">Compassionate psychiatric care in Mianwali &amp; Diliewali. Personalized treatment plans tailored to each patient's individual needs for lasting mental wellness.</p>
+<p class="hero-sub">Dr. Waris Khan Niazi — MBBS (Pak), DPM (FMU/PMC), CAMH-C (BMU Karachi)</p>
+<p class="hero-desc">Compassionate psychiatric care at Al Shifa Hospital, Mianwali &amp; surrounding areas. Personalized treatment plans tailored to each patient's individual needs for lasting mental wellness.</p>
 <div class="hero-btns">
 <a href="#contact" class="btn btn-primary">Book Appointment</a>
 <a href="#services" class="btn btn-outline">View Services</a>
 </div>
 <div class="trust-badges">
 <div class="trust-badge"><i class="fa-solid fa-circle-check"></i> MBBS Qualified</div>
-<div class="trust-badge"><i class="fa-solid fa-circle-check"></i> M.Phil Psychiatry</div>
+<div class="trust-badge"><i class="fa-solid fa-circle-check"></i> DPM (Faisalabad Medical University)</div>
+<div class="trust-badge"><i class="fa-solid fa-circle-check"></i> CAMH-C (BMU Karachi)</div>
 <div class="trust-badge"><i class="fa-solid fa-circle-check"></i> Govt &amp; Private Practice</div>
 </div>
 </div>
 <div class="hero-image">
 <div class="hero-img-wrapper">
-<img src="images/doctor.jpg" alt="Dr. Waris Khan Niazi - Psychiatrist" loading="eager" fetchpriority="high" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=&quot;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:rgba(255,255,255,.6)&quot;><i class=&quot;fa-solid fa-user-doctor&quot; style=&quot;font-size:5rem;margin-bottom:16px;color:rgba(14,154,167,.5)&quot;></i><span>Dr. Waris Khan Niazi</span></div>'">
+<img src="images/dr-working.jpg" alt="Dr. Waris Khan Niazi working" loading="eager" fetchpriority="high" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=&quot;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:rgba(255,255,255,.6)&quot;><i class=&quot;fa-solid fa-user-doctor&quot; style=&quot;font-size:5rem;margin-bottom:16px;color:rgba(14,154,167,.5)&quot;></i><span>Please save dr-working.jpg</span></div>'">
 </div>
 <div class="hero-float-card card-1">
 <i class="fa-solid fa-hospital"></i>
@@ -401,20 +406,20 @@ img{max-width:100%;display:block}
 <div class="about-grid">
 <div class="about-img-container reveal">
 <div class="about-img">
-<img src="images/doctor.jpg" alt="Dr. Waris Khan Niazi" loading="lazy" onerror="this.style.background='linear-gradient(135deg,rgba(14,154,167,.15),rgba(201,168,76,.1))';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';this.alt=''">
+<img src="images/dr-portrait.jpg" alt="Dr. Waris Khan Niazi Portrait" loading="lazy" onerror="this.style.background='linear-gradient(135deg,rgba(14,154,167,.15),rgba(201,168,76,.1))';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';this.alt='Please save dr-portrait.jpg'">
 </div>
 <div class="about-accent"></div>
 </div>
 <div class="about-content reveal">
 <h2>Dedicated to Your Mental Wellness</h2>
-<p>Dr. Waris Khan Niazi is a qualified Psychiatrist holding an MBBS degree and M.Phil in Psychiatry. With a deep commitment to mental health care, he serves the communities of Mianwali and Diliewali through both government and private practice.</p>
+<p>Dr. Waris Khan Niazi is a highly qualified Psychiatrist holding an <strong>MBBS (Pak)</strong>, a <strong>DPM (FMU/PMC)</strong> from Faisalabad Medical University, and a <strong>CAMH-C</strong> from BMU Karachi. With a deep commitment to mental health care, he serves as a Consulting Psychiatrist at Al Shifa Hospital, Mianwali, along with other clinics across the region.</p>
 <div class="about-highlight">
 <p>"Every patient deserves compassionate, personalized psychiatric care that addresses their unique challenges and empowers them toward recovery and well-being."</p>
 </div>
-<p>Currently serving as <strong>Health Manager</strong> at Government Hospital MNHC Diliewali and as a <strong>Consulting Psychiatrist</strong> at Al Shifa Hospital, Mianwali, Dr. Niazi brings expertise in diagnosing and treating a wide range of psychiatric disorders with evidence-based approaches.</p>
+<p>Formerly serving as <strong>Ex-Registrar, Department of Psychiatry and Behavioral Sciences</strong> at Allied / DHQ Hospital Faisalabad, Dr. Niazi brings expertise in diagnosing and treating a wide range of psychiatric disorders with evidence-based approaches.</p>
 <div class="about-stats">
-<div class="about-stat"><div class="stat-number">8+</div><div class="stat-label">Conditions Treated</div></div>
-<div class="about-stat"><div class="stat-number">2</div><div class="stat-label">Hospital Affiliations</div></div>
+<div class="about-stat"><div class="stat-number">15+</div><div class="stat-label">Conditions Treated</div></div>
+<div class="about-stat"><div class="stat-number">5</div><div class="stat-label">Locations</div></div>
 <div class="about-stat"><div class="stat-number">✓</div><div class="stat-label">Personalized Plans</div></div>
 </div>
 </div>
@@ -432,42 +437,47 @@ img{max-width:100%;display:block}
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-cloud-rain"></i></div>
 <h3>Depression &amp; Anxiety</h3>
-<p>Diagnosis and evidence-based treatment for persistent sadness, worry, panic attacks, and anxiety disorders.</p>
+<p>Diagnosis and evidence-based treatment for persistent sadness, worry, panic attacks, fear, and anxiety disorders.</p>
 </div>
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
-<h3>Schizophrenia</h3>
-<p>Comprehensive management of psychotic disorders including hallucinations, delusions, and disorganized thinking.</p>
+<h3>Schizophrenia &amp; Psychosis</h3>
+<p>Comprehensive management of psychotic disorders including hearing voices, delusions, and disorganized thinking.</p>
 </div>
 <div class="service-card reveal">
-<div class="service-icon"><i class="fa-solid fa-arrows-up-down"></i></div>
-<h3>Bipolar Disorder</h3>
-<p>Mood stabilization and long-term care for extreme emotional highs and lows affecting daily functioning.</p>
+<div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+<h3>Epilepsy &amp; Seizures</h3>
+<p>Expert diagnosis and long-term medical management for epilepsy and seizure disorders to improve quality of life.</p>
 </div>
 <div class="service-card reveal">
-<div class="service-icon"><i class="fa-solid fa-shield-heart"></i></div>
-<h3>PTSD</h3>
-<p>Trauma-informed therapy and treatment for flashbacks, nightmares, and stress following traumatic events.</p>
+<div class="service-icon"><i class="fa-solid fa-head-side-virus"></i></div>
+<h3>Migraines &amp; Headaches</h3>
+<p>Treatment for chronic half-headaches, migraines, and related neurological pain affecting daily functioning.</p>
 </div>
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-rotate"></i></div>
-<h3>OCD</h3>
-<p>Structured treatment plans for intrusive thoughts and compulsive behaviors disrupting normal life.</p>
+<h3>OCD &amp; Paranoia</h3>
+<p>Structured treatment plans for recurring intrusive thoughts, suspicion, and compulsive behaviors disrupting normal life.</p>
 </div>
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-wine-bottle"></i></div>
-<h3>Addiction &amp; Substance Abuse</h3>
+<h3>Addiction Treatment</h3>
 <p>Rehabilitation support and psychiatric care for patients struggling with drug or alcohol dependency.</p>
 </div>
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-child-reaching"></i></div>
-<h3>Child &amp; Adolescent Psychiatry</h3>
-<p>Specialized mental health assessment and care for children and teenagers facing behavioral or emotional challenges.</p>
+<h3>Child Psychiatry</h3>
+<p>Specialized mental health assessment and care for children facing mental issues, behavioral, or emotional challenges.</p>
 </div>
 <div class="service-card reveal">
 <div class="service-icon"><i class="fa-solid fa-moon"></i></div>
 <h3>Sleep Disorders</h3>
-<p>Evaluation and treatment of insomnia, hypersomnia, and other sleep-related psychiatric conditions.</p>
+<p>Evaluation and treatment of insomnia, sleep issues, hypersomnia, and other sleep-related psychiatric conditions.</p>
+</div>
+<div class="service-card reveal">
+<div class="service-icon"><i class="fa-solid fa-user-xmark"></i></div>
+<h3>Anger &amp; Memory Issues</h3>
+<p>Therapy and medical treatment for anger management, irritability, despair, negative thoughts, and memory weakness.</p>
 </div>
 </div>
 </div>
@@ -480,29 +490,45 @@ img{max-width:100%;display:block}
 <h2 class="section-title">Clinic Hours &amp; Locations</h2>
 <p class="section-subtitle">Visit Dr. Waris Khan Niazi at either of his two practice locations during scheduled clinic hours.</p>
 <div class="locations-grid">
+<div class="location-card reveal" style="border: 2px solid var(--secondary);">
+<div class="loc-icon"><i class="fa-solid fa-house-medical-flag"></i></div>
+<h3>Al Shifa Hospital, Mianwali</h3>
+<p class="loc-role" style="color:var(--primary)">Main Clinic</p>
+<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Mianwali, Pakistan</p>
+</div>
 <div class="location-card reveal">
 <div class="loc-icon"><i class="fa-solid fa-hospital"></i></div>
-<h3>Government Hospital MNHC Diliewali</h3>
-<p class="loc-role">Health Manager</p>
-<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Diliewali, Punjab, Pakistan</p>
+<h3>Maryam Hospital Gullan Khel</h3>
+<p class="loc-role">Consulting Psychiatrist</p>
+<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Gullan Khel, Pakistan</p>
 </div>
 <div class="location-card reveal">
 <div class="loc-icon"><i class="fa-solid fa-house-medical"></i></div>
-<h3>Al Shifa Hospital, Mianwali</h3>
+<h3>Family Hospital Qamar Mashani</h3>
 <p class="loc-role">Consulting Psychiatrist</p>
-<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Mianwali, Punjab, Pakistan</p>
+<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Qamar Mashani, Pakistan</p>
+</div>
+<div class="location-card reveal">
+<div class="loc-icon"><i class="fa-solid fa-hospital-user"></i></div>
+<h3>Mazhar Hospital Piplan</h3>
+<p class="loc-role">Consulting Psychiatrist</p>
+<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Piplan, Pakistan</p>
+</div>
+<div class="location-card reveal">
+<div class="loc-icon"><i class="fa-solid fa-clinic-medical"></i></div>
+<h3>Talha Clinic Hafiz Wala</h3>
+<p class="loc-role">Consulting Psychiatrist</p>
+<p style="color:#666;font-size:.93rem"><i class="fa-solid fa-location-dot" style="color:var(--secondary);margin-right:6px"></i>Hafiz Wala, Pakistan</p>
 </div>
 </div>
 <table class="schedule-table reveal">
-<thead><tr><th>Day</th><th>Status</th><th>Hours</th></tr></thead>
+<thead><tr><th>Location</th><th>Day</th><th>Hours</th></tr></thead>
 <tbody>
-<tr><td>Monday</td><td class="status-open">Open</td><td>5:00 PM – 8:00 PM</td></tr>
-<tr><td>Tuesday</td><td class="status-open">Open</td><td>5:00 PM – 8:00 PM</td></tr>
-<tr><td>Wednesday</td><td class="status-open">Open</td><td>5:00 PM – 8:00 PM</td></tr>
-<tr><td>Thursday</td><td class="status-open">Open</td><td>5:00 PM – 8:00 PM</td></tr>
-<tr><td>Friday</td><td class="status-closed">Closed</td><td>—</td></tr>
-<tr><td>Saturday</td><td class="status-open">Open</td><td>5:00 PM – 8:00 PM</td></tr>
-<tr><td>Sunday</td><td class="status-closed">Closed</td><td>—</td></tr>
+<tr><td>Al Shifa Hospital, Mianwali</td><td class="status-open">Mon-Thu, Sat</td><td>4:00 PM – 7:00 PM</td></tr>
+<tr><td>Family Hospital Qamar Mashani</td><td class="status-open">Friday</td><td>2:00 PM – 4:00 PM</td></tr>
+<tr><td>Maryam Hospital Gullan Khel</td><td class="status-open">Friday</td><td>4:00 PM – 6:00 PM</td></tr>
+<tr><td>Talha Clinic Hafiz Wala</td><td class="status-open">Sunday</td><td>9:00 AM – 12:00 PM</td></tr>
+<tr><td>Mazhar Hospital Piplan</td><td class="status-open">Sunday</td><td>12:00 PM – 2:00 PM</td></tr>
 </tbody>
 </table>
 </div>
@@ -519,19 +545,19 @@ img{max-width:100%;display:block}
 <div class="quote-icon">"</div>
 <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 <blockquote>Dr. Niazi truly understands the struggles of mental health. After months of feeling lost, his treatment plan helped me regain control of my life. I finally feel like myself again.</blockquote>
-<div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Ahmed R.</div><div class="testimonial-loc">Mianwali</div></div></div>
+<div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Ahmed R.</div><div class="testimonial-loc">Piplan</div></div></div>
 </div>
 <div class="testimonial-card reveal">
 <div class="quote-icon">"</div>
 <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 <blockquote>The compassion and patience Dr. Waris shows is exceptional. He listened to my concerns without judgment and provided a treatment that truly works. Highly recommended for anyone struggling with anxiety.</blockquote>
-<div class="testimonial-author"><div class="testimonial-avatar">F</div><div><div class="testimonial-name">Fatima S.</div><div class="testimonial-loc">Diliewali</div></div></div>
+<div class="testimonial-author"><div class="testimonial-avatar">F</div><div><div class="testimonial-name">Fatima S.</div><div class="testimonial-loc">Qamar Mashani</div></div></div>
 </div>
 <div class="testimonial-card reveal">
 <div class="quote-icon">"</div>
 <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 <blockquote>My child was facing severe behavioral issues, and Dr. Niazi's expertise in child psychiatry made all the difference. He is gentle, professional, and incredibly knowledgeable. Thank you, Doctor.</blockquote>
-<div class="testimonial-author"><div class="testimonial-avatar">K</div><div><div class="testimonial-name">Khalid M.</div><div class="testimonial-loc">Mianwali</div></div></div>
+<div class="testimonial-author"><div class="testimonial-avatar">K</div><div><div class="testimonial-name">Khalid M.</div><div class="testimonial-loc">Hafiz Wala</div></div></div>
 </div>
 <div class="testimonial-card reveal">
 <div class="quote-icon">"</div>
@@ -589,19 +615,19 @@ img{max-width:100%;display:block}
 <h3>Contact Information</h3>
 <div class="contact-item">
 <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
-<div><h4>Phone</h4><p>Contact number to be updated</p></div>
+<div><h4>Phone</h4><p>0312-3604369</p></div>
 </div>
 <div class="contact-item">
 <div class="contact-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
-<div><h4>WhatsApp</h4><p>WhatsApp number to be updated</p></div>
+<div><h4>WhatsApp</h4><p>0312-3604369</p></div>
 </div>
 <div class="contact-item">
 <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
-<div><h4>Locations</h4><p>MNHC Diliewali &amp; Al Shifa Hospital, Mianwali</p></div>
+<div><h4>Locations</h4><p>Mianwali, Gullan Khel, Qamar Mashani, Piplan, Hafiz Wala</p></div>
 </div>
 <div class="contact-item">
 <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
-<div><h4>Clinic Hours</h4><p>Mon–Thu &amp; Sat: 5:00 PM – 8:00 PM<br>Friday &amp; Sunday: Closed</p></div>
+<div><h4>Clinic Hours</h4><p>Mon-Sat 4:00-7:00 PM<br>(See schedule for other locations)</p></div>
 </div>
 </div>
 <div class="contact-form reveal">
@@ -618,15 +644,18 @@ img{max-width:100%;display:block}
 <label for="location">Preferred Location</label>
 <select id="location" name="location" required>
 <option value="" disabled selected>Select a location</option>
-<option value="MNHC Diliewali">Government Hospital MNHC Diliewali</option>
-<option value="Al Shifa Mianwali">Al Shifa Hospital, Mianwali</option>
+<option value="Al Shifa Hospital, Mianwali">Al Shifa Hospital, Mianwali</option>
+<option value="Maryam Hospital Gullan Khel">Maryam Hospital Gullan Khel</option>
+<option value="Family Hospital Qamar Mashani">Family Hospital Qamar Mashani</option>
+<option value="Mazhar Hospital Piplan">Mazhar Hospital Piplan</option>
+<option value="Talha Clinic Hafiz Wala">Talha Clinic Hafiz Wala</option>
 </select>
 </div>
 <div class="form-group">
 <label for="day">Preferred Day</label>
 <select id="day" name="day" required>
 <option value="" disabled selected>Select a day</option>
-<option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Saturday</option>
+<option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
 </select>
 </div>
 <div class="form-group">
@@ -646,7 +675,7 @@ img{max-width:100%;display:block}
 <div class="footer-grid">
 <div class="footer-brand">
 <h3 style="font-size:1.3rem">Dr. Waris Khan <span style="color:var(--accent)">Niazi</span></h3>
-<p style="margin-top:10px">Compassionate Psychiatric Care in Mianwali &amp; Diliewali. Dedicated to improving mental health and empowering patients toward recovery and well-being.</p>
+<p style="margin-top:10px">Compassionate Psychiatric Care across Mianwali District. Dedicated to improving mental health and empowering patients toward recovery and well-being.</p>
 </div>
 <div>
 <h3>Quick Links</h3>
@@ -663,13 +692,11 @@ img{max-width:100%;display:block}
 <div>
 <h3>Clinic Hours</h3>
 <ul class="footer-hours">
-<li>Monday: 5–8 PM</li>
-<li>Tuesday: 5–8 PM</li>
-<li>Wednesday: 5–8 PM</li>
-<li>Thursday: 5–8 PM</li>
-<li style="color:var(--accent)">Friday: Closed</li>
-<li>Saturday: 5–8 PM</li>
-<li style="color:var(--accent)">Sunday: Closed</li>
+<li>Mon-Thu, Sat (Mianwali): 4–7 PM</li>
+<li>Friday (Qamar Mashani): 2–4 PM</li>
+<li>Friday (Gullan Khel): 4–6 PM</li>
+<li>Sunday (Hafiz Wala): 9 AM–12 PM</li>
+<li>Sunday (Piplan): 12–2 PM</li>
 </ul>
 </div>
 </div>
@@ -680,15 +707,15 @@ img{max-width:100%;display:block}
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+<a href="https://wa.me/923123604369" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <!-- MOBILE STICKY BOTTOM BAR -->
 <div class="mobile-bottom-bar">
 <div class="bar-inner">
-<a href="tel:+92" class="bar-call"><i class="fa-solid fa-phone"></i><span>Call Now</span></a>
-<a href="https://wa.me/" target="_blank" class="bar-wa"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+<a href="tel:+923123604369" class="bar-call"><i class="fa-solid fa-phone"></i><span>Call Now</span></a>
+<a href="https://wa.me/923123604369" target="_blank" class="bar-wa"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
 <a href="#contact" class="bar-book"><i class="fa-solid fa-calendar-check"></i><span>Book Now</span></a>
 </div>
 </div>
