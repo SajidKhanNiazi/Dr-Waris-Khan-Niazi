@@ -498,6 +498,7 @@
                 { urdu: "گلاں خیل", en: "Gullan Khel", action: () => showClinicArea("gullan") },
                 { urdu: "حافظ والہ", en: "Hafiz Wala", action: () => showClinicArea("hafiz") },
                 { urdu: "پیپلاں", en: "Piplan", action: () => showClinicArea("piplan") },
+                { urdu: "قائد آباد", en: "Quaidabad", action: () => showClinicArea("quaidabad") },
                 { urdu: "دوسرا علاقہ", en: "Other Area", action: () => showClinicArea("other") },
                 { urdu: "🔙 واپس جائیں", en: "Go Back", action: showMainMenu }
             ]);
@@ -509,6 +510,7 @@
             else if (area === "gullan") { urdu = "📍 مریم ہسپتال، گلاں خیل<br>دن: جمعہ<br>وقت: شام 4 بجے سے 6 بجے تک"; en = "Maryam Hospital Gullan Khel<br>Friday | 4:00–6:00 PM"; clinicName = "مریم ہسپتال (گلاں خیل)"; }
             else if (area === "hafiz") { urdu = "📍 طلحہ کلینک، حافظ والہ<br>دن: اتوار<br>وقت: صبح 9 بجے سے دوپہر 12 بجے تک"; en = "Talha Clinic Hafiz Wala<br>Sunday | 9:00 AM–12:00 PM"; clinicName = "طلحہ کلینک (حافظ والہ)"; }
             else if (area === "piplan") { urdu = "📍 مظہر ہسپتال، پیپلاں<br>دن: اتوار<br>وقت: دوپہر 12 بجے سے 2 بجے تک"; en = "Mazhar Hospital Piplan<br>Sunday | 12:00–2:00 PM"; clinicName = "مظہر ہسپتال (پیپلاں)"; }
+            else if (area === "quaidabad") { urdu = "📍 عطاء سعدیہ ہسپتال، قائد آباد<br>دن: ہفتہ<br>وقت: دوپہر 2 بجے سے شام 4 بجے تک"; en = "Atta Sadia Hospital Quaidabad<br>Saturday | 2:00–4:00 PM"; clinicName = "عطاء سعدیہ ہسپتال (قائد آباد)"; }
             else if (area === "other") {
                 urdu = "🌐 آن لائن مشاورت بھی دستیاب ہے۔<br>واٹس ایپ پر رابطہ کریں۔"; en = "Online consultation available.<br>Contact via WhatsApp.";
                 sendBotMessage(urdu, en);
@@ -553,6 +555,12 @@
                     <div class="location-title-en">Mazhar Hospital Piplan</div>
                     <div class="location-details ur">اتوار</div>
                     <div class="location-details"><span>Sunday</span> <span>⏰ 12:00 PM – 2:00 PM</span></div>
+                </div>
+                <div class="location-card">
+                    <div class="location-title-ur">📍 عطاء سعدیہ ہسپتال، قائد آباد</div>
+                    <div class="location-title-en">Atta Sadia Hospital Quaidabad</div>
+                    <div class="location-details ur">ہفتہ</div>
+                    <div class="location-details"><span>Saturday</span> <span>⏰ 2:00 PM – 4:00 PM</span></div>
                 </div>
             `;
             
